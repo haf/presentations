@@ -1,0 +1,8 @@
+packages/
+*resharper*
+ReSharper.*/
+bin/
+obj/
+*.suo
+RabbitMQ-MT/Aspects/
+Scandev2012/

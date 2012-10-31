@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7FC1A971-9DA6-46D6-AF05-727EEB7053B8}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExcelCreator</RootNamespace>
+    <AssemblyName>ExcelCreator</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus">
+      <HintPath>..\packages\EPPlus.3.1.1\lib\net35\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Magnum">
+      <HintPath>..\packages\Magnum.2.0.1.0\lib\NET40\Magnum.dll</HintPath>
+    </Reference>
+    <Reference Include="MassTransit">
+      <HintPath>..\packages\MassTransit.2.6.3\lib\net40\MassTransit.dll</HintPath>
+    </Reference>
+    <Reference Include="MassTransit.NLogIntegration">
+      <HintPath>..\packages\MassTransit.NLog.2.6.3\lib\net40\MassTransit.NLogIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="MassTransit.Transports.MSMQ">
+      <HintPath>..\packages\MassTransit.2.6.3\lib\net40\MassTransit.Transports.MSMQ.dll</HintPath>
+    </Reference>
+    <Reference Include="MassTransit.Transports.RabbitMq">
+      <HintPath>..\packages\MassTransit.RabbitMQ.2.6.3\lib\net40\MassTransit.Transports.RabbitMq.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="RabbitMQ.Client">
+      <HintPath>..\packages\RabbitMQ.Client.2.8.7\lib\net30\RabbitMQ.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Messages\Messages.csproj">
+      <Project>{0D051FC3-C520-4874-848E-8D80E438D334}</Project>
+      <Name>Messages</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
