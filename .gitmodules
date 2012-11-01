@@ -1,0 +1,9 @@
+[submodule "RabbitMQ-MT/SimplePubSub/modules/rabbitmq"]
+	path = RabbitMQ-MT/SimplePubSub/modules/rabbitmq
+	url = git@github.com:haf/puppet-rabbitmq.git
+[submodule "RabbitMQ-MT/SimplePubSub/modules/epel"]
+	path = RabbitMQ-MT/SimplePubSub/modules/epel
+	url = git@github.com:haf/puppet-module-epel.git
+[submodule "RabbitMQ-MT/SimplePubSub/modules/stdlib"]
+	path = RabbitMQ-MT/SimplePubSub/modules/stdlib
+	url = git://github.com/puppetlabs/puppetlabs-stdlib.git
