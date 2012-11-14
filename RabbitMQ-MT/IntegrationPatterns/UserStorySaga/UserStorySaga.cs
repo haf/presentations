@@ -187,6 +187,8 @@ namespace UserStorySaga
 
 			Map(x => x.Started);
 			Map(x => x.Ended);
+
+			Map(x => x.CompositeSvcsComplete);
 		}
 	}
 

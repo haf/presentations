@@ -63,13 +63,15 @@ namespace FileWatcher
 			if (_bus == null)
 				return;
 
-            _logger.Info("Sending FileFound");
+            _logger.Warn("FileFound sending");
 
 			_bus.Publish<FileFound>(new Found
 				{
 					Location = new Uri(e.Path),
 					CorrelationId = Guid.NewGuid()
 				});
+
+			_logger.Warn("FileFound sent");
 		}
 	}
 
