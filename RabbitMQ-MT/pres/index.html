@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>RabbitMQ + MassTransit</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -33,18 +33,17 @@
 		<div class="reveal">
 <div class="slides">
     <section>
-        <section>
-            <h1>RabbitMQ and MassTransit</h1>
-            <p>2012-11-14</p>
-        </p>
+        <h1>RabbitMQ and MassTransit</h1>
+        <p>2012-11-14</p>
     </section>
+	
     <section>
         <h2>Presentation Overview</h2>
 		<ul>
 			<li>What is RabbitMQ?</li>
 			<li>What is MassTransit?</li>
 			<li>Demo 1 - Simple Pub-Sub</li>
-			<li>Discussion</li>
+			<li>Concepts from PubSub</li>
 			<li>Demo 2 - Integration Patterns</li>
 			<li>MassTransit Projects</li>
 			<li>Discussion</li>
@@ -55,15 +54,12 @@
 		<section>
 			<h2>About</h2>
 			<ul>
-				<li>Name. Henrik Feldt</li>
 				<li><a href="https://twitter.com/henrikfeldt">@henrikfeldt</a></li>
 				<li><a href="mailto:henrik.feldt@jayway.com">henrik.feldt@jayway.com</a></li>
 			</ul>
 		</section>
 		<section>
-		
 			<h2>Github</h2>
-		
 			<p>
 				You can find all this material and code online at:			
 				<a href="https://github.com/haf/presentations" title="Go to the presentations online">
@@ -76,15 +72,114 @@
 			
 			<p>I work at Jayway, an awesome consulting company in Stockolm.</p>
 			
-			<p>Focus on Distributed Systems</p>			
+			<p>Focus on Distributed Systems</p>
 		</section>
 	</section>
 	
 	<section>
-		<h2>RabbitMQ?</h2>
+		<section>
+			<h2>RabbitMQ</h2>
+			<p>A message broker</p>
+		</section>
+		<section>
+			<h2>What is a broker?</h2>
+			<p><img src="http://www.rabbitmq.com/img/tutorials/python-two.png" alt="basic queue between a producer and two consumers" /></p>
+			<ul>
+				<li>Stand-alone, known point in the topology</li>
+				<li>Performs rounting</li>
+				<li>Handles client connections</li>
+			</ul>
+		</section>
+		<section>
+			<h2>What is a broker? (2)</h2>
+			<p>You can compare it with how a DNS server works:</p>
+			<p><img src="http://manchester-seo-blog.co.uk/wp-content/uploads/2010/04/32192_dns-query.gif" /></p>
+		</section>
+		<section>
+			<h2>RabbitMQ Concepts</h2>
+			<ul>
+				<li>Exchanges</li>
+				<li>Queues</li>
+				<li>Bindings</li>
+			</ul>
+		</section>
 		
+		<section>
+			<h2>Exchanges</h2>
+			<p>An exchange is a point you <i>publish a message to</i></p>
+			<p>An exchange <i>routes</i> to a <i>queue</i></p>
+		</section>
+		
+		<section>
+			<h2>Queues</h2>
+			<p>A queue you <i>consume messages</i> from.</p>
+			<p>You <i>bind</i> your client to a queue</p>
+			<p>You <i>don't need to know what exchange</i>
+			   that the queue gets its messages from.</p>
+		<section>
+	</section>
+	
+	
+	<section>
+	
+		<section>
+			<h2>MassTransit</h2>
+		</section>
+	
+		<section>
+			<h2>MassTransit Concepts</h2>
+			
+			<ul>
+				<li>Type-based Routing</li>
+				<li>Abstracting Transport</li>
+				<li>Serialization</li>
+				<li>API for sending messages</li>
+			</ul>
+		</section>
+	
+	</section>
+	
+	<section>
+		<h2>Demo 1 - Simple PubSub</h2>
+	</section>
+	
+	<section>
+		<h2>Simple PubSub</h2>
+		<p>How does MassTransit use RabbitMQ?</p>
 		
 	</section>
+	
+	<section>
+		<h2>Demo 2 - Integration Patterns</h2>
+	</section>
+	
+	<section>
+		<section>
+			<h2>Concepts Seen in IntegrationPatterns</h2>
+			<ul>
+				<li>Sagas</li>
+				<li>How to handle SynchronizationContext with Excel</li>
+				<li>Configuring Logging</li>
+			</ul>
+		</section>
+		<section>
+			<h2>What does MassTransit give over RabbitMQ?</h2>
+			<p>A question commonly asked!</p>
+			<p>Have a look at <a href="https://masstransit.readthedocs.org/en/latest/overview/valueadd.html">This page</a>.</p>
+		<section>
+	</section>
+	<section>
+		<h2>Discussion</h2>
+		<ul>
+			<li>MassTransit documentation: <a href="http://readthedocs.org/docs/masstransit/en/latest/">Read The Docs</a></li>
+			<li>Automatonymous: <img src="https://raw.github.com/haf/Automatonymous/welcome_robot/doc/img/Automatonymous.gif" /></li>
+		</ul>
+	</section>
+	
+	<section>
+		<h2>Questions?</h2>
+	</section>
+	
 </section>
 <section>
     <h2>Title</h2>
