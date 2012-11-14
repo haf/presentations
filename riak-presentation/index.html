@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+
+<title>Riak presentation</title>
+
+<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+<meta name="author" content="Timo Hillerns">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/theme/jayway.css" id="theme">
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="lib/css/zenburn.css">
+
+<script>
+			// If the query includes 'print-pdf' we'll use the PDF print sheet
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<!-- Used to fade in a background when a specific slide state is reached -->
+		<div class="state-background"></div>
+
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<section>
+				<h2>NoSQL with Riak</h2>
+				<p>NoSQL = Not only SQL</p>
+			</section>
+			<section>
+				<h2>Need for NoSQL</h2>
+				<ul>
+					<li>Petabytes of data</li>
+					<li>Lots of writes</li>
+					<li>Low latency reads</li>
+					<li>Unstructured data</li>
+					<li>Horizontal scalability</li>
+					<li>Availability</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Data perspective</h2>
+				<img src="http://blog.monitis.com/wp-content/uploads/2011/05/052211_1952_PickingtheR2.png" width="600" />
+			</section>
+			<section>
+				<!-- http://blog.monitis.com/index.php/2011/05/22/picking-the-right-nosql-database-tool/,
+				http://rebelic.nl/engineering/the-four-categories-of-nosql-databases/,
+				http://innovate2.wordpress.com/ -->
+				<h2>NoSQL database types (1)</h2>
+				<ul>
+					<li>Graph database
+						<ul>
+							<li>Neo4j, OrientDB, FlockDB (Scala)</li>
+						</ul>
+					</li>
+					<li>Document store
+						<ul>
+							<li>CouchDB, MongoDB, SimpleDB</li>
+						</ul>
+					</li>
+					<li>Column-family store
+						<ul>
+							<li>Big data, e.g. Cassandra, HBase</li>
+						</ul>
+					</li>
+					<li>Key-value store
+						<ul>
+							<li>In memory, e.g. Redis, Hazelcast, memcached</li>
+							<li>In cloud, e.g. Amazon DynamoDB and SimpleDB</li>
+							<li>On disk, e.g. LevelDB, MemcachDB, MongoDB, Riak</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<!--<h2>NoSQL overview - Comparison</h2>-->
+				<img src="img/comparison_nosql.png" />
+			</section>
+			<section>
+				<h2>NoSQL database types (3)</h2>
+				<img src="img/comparison_header.png" />
+			</section>
+			<!--
+			<section>
+				<h2>Riak compared</h2>
+				<p>
+					Comparison available <a href="http://docs.basho.com/riak/1.2.0/references/appendices/comparisons/">here</a>
+			</section>
+			<section>
+				<h2>NoSQL overview - Types</h2>
+				<img src="http://blog.monitis.com/wp-content/uploads/2011/05/052211_1952_PickingtheR2.png" width="600" />
+			</section>
+			-->
+			<!-- Eventual consistent -->
+			<section>
+				<h2>NoSQL and CAP</h2>
+				<img
+					src="http://getfile5.posterous.com/getfile/files.posterous.com/nahurst/IAHBjwAxcmieJzvtqqyIgriyIzqquwwxumguABujzlzHEbEeJgvhCFcriika/media_httpfarm5static_mevIk.png.scaled1000.png" />
+			</section>
+			<section>
+				<h2>NoSQL and ACID</h2>
+				<p>ACID</p>
+				<ul>
+					<li>Atomicity - a transaction is all or nothing</li>
+					<li>Consistency - only valid data is written to the database</li>
+					<li>Isolation - pretend all transactions are happening serially and the data is correct</li>
+					<li>Durability - what you write is what you get</li>
+				</ul>
+				<p>becomes BASE</p>
+				<ul>
+					<li>Basically Available - system seems to work all the time</li>
+					<li>Soft State - it doesn't have to be consistent all the time</li>
+					<li>Eventually Consistent - becomes consistent at some later time</li>
+				</ul>
+			</section>
+			<section>
+				<h2>German facts</h2>
+				<p>The offical longest word in german: Rindfleischetikettierungsüberwachungsaufgaben-<br/>übertragungsgesetz
+					(RflEttÜAÜG)</p>
+				<p class="fragment">Translation: beef labeling supervision delegation law</p>
+			</section>
+			<section>
+				<h2>Riak</h2>
+				<ul>
+					<li>NoSQL database</li>
+					<li>Key-value store in form of buckets</li>
+					<li>Stores data by content-type</li>
+					<li>Written in Erlang</li>
+					<li>Multiple client libs, e.g. Java, Ruby, Erlang, Python</li>
+					<li>Can be used via HTTP and ProtocolBuffers</li>
+					<li>Consistent ring hashing</li>
+					<li>Vektor clocks</li>
+					<li>Used in production by Github, Yammer, Klarna, Hitta.se, DISQUS and many more</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Ring hashing</h2>
+				<img src="http://wiki.basho.com/attachments/riak-ring.png" />
+				<!--<p>160 bit hashes</p>-->
+			</section>
+			<section>
+				<h2>Data replication</h2>
+				<img src="http://wiki.basho.com/attachments/riak-data-distribution.png" />
+			</section>
+			<section>
+				<h2>Virtual nodes</h2>
+				<!-- See https://github.com/rzezeski/try-try-try/tree/master/2011/riak-core-the-vnode -->
+				<p>A vnode</p>
+				<ul>
+					<li>is a <em>virtual node</em>, as opposed to physical node
+					</li>
+					<li>is responsible for <strong>one</strong> partition on the <a
+						href="http://wiki.basho.com/An-Introduction-to-Riak.html#Clustering">ring</a></li>
+					<li>is an <a href="http://www.erlang.org/doc/reference_manual/processes.html">Erlang process (generic finite state machine)</a></li>
+					<li>handles incoming requests</li>
+					<li>potentially stores data to be retrieved later</li>
+					<li>is <em>the</em> unit of concurrency, replication, and fault tolerance
+					</li>
+					<li>typically runs with other vnodes on a physical hardware node</li>
+					<li>is attached to a <em>vnode master</em> (one per machine) who's purpose is to keep track of all active
+						vnodes on it's node
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Vector clocks</h2>
+				<img src="http://www.cs.rutgers.edu/~pxk/rutgers/notes/clocks/images/clocks-vector.png" width="600" />
+				<!-- Vector clock just gives an order of events, but does not solve conflicts!!! -->
+				<p class="fragment">Handles the order of events, but does not resolve potential conflicts</p>
+			</section>
+			<section>
+				<h2>Riak stack</h2>
+				<!-- See http://www.erlang-factory.com/upload/presentations/255/RiakInside.pdf -->
+				<img src="img/riak-stack.png" />
+			</section>
+			<section>
+				<h2>Get Riak</h2>
+				<p>Install</p>
+				<pre><code contenteditable="true">
+$ sudo apt-get install libssl0.9.8
+
+$ wget http://downloads.basho.com.s3-website-us-east-1.amazonaws.com/riak/CURRENT/ubuntu/lucid/riak_1.2.0-1_amd64.deb
+
+$ sudo dpkg -i riak_1.2.0-1_amd64.deb
+				</code></pre>
+				<p>Start</p>
+				<pre><code contenteditable="true">
+$ sudo service riak start
+				</code></pre>
+			</section>
+			<section>
+				<h2>Read operations (r)</h2>
+				<p>All CRUD operations can be executed via HTTP</p>
+				<pre style="background: #3F3F3F; display: block; padding: 0.5em;">
+// show all known buckets
+<a href="http://192.168.100.14:8098/buckets?buckets=true">GET /buckets?buckets=true</a>
+
+// show keys
+<a href="http://192.168.100.14:8098/buckets/users/keys?keys=true">GET /buckets/users/keys?keys=true</a>
+
+// show bucket entry
+<a href="http://192.168.100.14:8098/buckets/users/keys/timo.hillerns@jayway.com">GET /buckets/users/keys/timo.hillerns@jayway.com</a>
+
+// show bucket properties
+<a href="http://192.168.100.14:8098/buckets/users/props">GET /buckets/users/prop</a>
+				</pre>
+			</section>
+			<section>
+				<h2>Rekon</h2>
+				<p>Previous admin interface to Riak, will be merge into new Riak Control. Installation:</p>
+				<pre><code>
+$ curl -s rekon.basho.com | sh
+				</code></pre> <a href="http://192.168.100.14:8098/riak/rekon/go#/buckets">Use it</a>
+				<!-- Show rekon bucket and properties, modify one entry -->
+			</section>
+			<section>
+				<h2>Write operations (w)</h2>
+				<pre><code contenteditable="true">
+// insert some data
+$ curl -v -X PUT -d 'this is some text' -H "Content-Type: text/plain" http://192.168.100.14:8098/riak/test/text?returnbody=true
+
+// override data
+$ curl -v -X PUT -d 'this is awesome' -H "Content-Type: text/plain" http://192.168.100.14:8098/riak/test/text
+
+// allow multiple version
+
+// add more
+$ curl -v -X PUT -d 'this is more awesome, true story' -H "Content-Type: text/plain" http://192.168.100.14:8098/riak/test/text
+
+// drop
+$ curl -v -X DELETE http://192.168.100.14:8098/riak/test/text
+				</code></pre>
+			</section>
+			<section>
+				<h2>Riak cluster</h2>
+				<p>Simple cluster setup</p>
+				<pre><code>
+// join another node
+$ sudo riak-admin cluster join &lt;node&gt;
+
+// show ring status
+$ sudo riak-admin ringready
+
+// show cluster membership
+$ sudo riak-admin member-status
+
+// review cluster plan (required)
+$ sudo riak-admin cluster plan
+
+// commit cluster changes
+$ sudo riak-admin cluster commit
+
+// show active traffic
+$ sudo riak-admin transfers
+
+// leave the cluster
+$ sudo riak-admin cluster leave
+				</code></pre>
+				<!-- Show rekon bucket and properties, modify one entry -->
+			</section>
+			<section>
+				<h2>Riak Control</h2>
+				<p>Admin interface to Riak</p>
+				<a href="https://192.168.100.14:8069/admin/">Go</a>
+			</section>
+			<section>
+				<h2>German facts</h2>
+				<p>The per head consumption of beer in Germany: 110 liters per person and year, 155 in bavaria</p>
+				<p class="fragment">In Sweden: 56 liters</p>
+			</section>
+			<section>
+				<h2>Java client config</h2>
+				<pre><code contenteditable="true">
+public class ConfigurationProvider implements Provider&lt;Configuration&lt; {
+	@Override
+	public Configuration get() {
+		// PB = protocol buffers
+		PBClusterConfig riakClusterConfig = new PBClusterConfig(20);
+		// See above examples for client config options
+		PBClientConfig riakClientConfig = PBClientConfig.defaults();
+		// cluster config
+		riakClusterConfig.addHosts(riakClientConfig, "192.168.100.14","192.168.100.13");
+		return riakClusterConfig;
+	}
+}
+					</code></pre>
+			</section>
+			<section>
+				<h2>Failover</h2>
+				<pre style="background: #3F3F3F; display: block; padding: 0.5em;">
+// stop a node 192.168.100.13
+$ sudo riak stop
+
+// add data to 192.168.100.14
+$ curl -v -X PUT -d 'this is great' -H "Content-Type: text/plain" http://192.168.100.14:8098/riak/test/text1
+$ curl -v -X PUT -d 'more and more' -H "Content-Type: text/plain" http://192.168.100.14:8098/riak/test/text2
+$ curl -v -X PUT -d 'enough' -H "Content-Type: text/plain" http://192.168.100.14:8098/riak/test/text3
+
+// restart 192.168.100.13
+$ sudo riak start
+
+// show keys on 192.168.100.13
+<a href="http://192.168.100.13:8098/buckets/test/keys?keys=true">GET /buckets/test/keys?keys=true</a>
+				</pre>
+			</section>
+			<!-- TODO: Secondary index -->
+			<!-- TODO: Map/reduce -->
+			<section>
+				<h2>Riaknostic</h2>
+				<p>Install</p>
+				<pre><code>
+$ wget https://github.com/basho/riaknostic/downloads/riaknostic-1.0.2.tar.gz -P /tmp
+
+$ cd /usr/lib/riak/lib
+
+$ sudo tar xzvf /tmp/riaknostic-1.0.2.tar.gz
+				</code></pre>
+				<p>Usage</p>
+				<pre><code>
+$ sudo riak-admin diag
+				</code></pre>
+			</section>
+			<section>
+				<h2>Riak read repair</h2>
+				<!--See http://contrib.basho.com/bucket_inspector.html -->
+				<p>
+					<a
+						href="https://github.com/basho/riak_function_contrib/blob/master/function-contrib-gollum/bucket_inspector.textile">Get
+						the code</a>
+				</p>
+				<pre><code>
+// compile the code
+$ erlc -o /tmp /tmp/bucket_inspector.erl
+
+// attach to Riak Erlang process
+$ riak attach
+
+// add path to process
+> code:add_path("/tmp").
+
+// module
+> m(bucket_inspector).
+
+// read all items in bucket
+> bucket_inspector:inspect(<<"bucket">>, 'riak@192.168.100.14').
+				</code></pre>
+			</section>
+			<section>
+				<h2>More features</h2>
+				<ul>
+					<li>MapReduce (written in JavaScript)
+					<li>Data linking and link traversing (similiar to graphs)</li>
+					<li>Secondary indexes and search</li>
+					<li>Commit hooks</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Riak use cases</h2>
+				<ul>
+					<li>Session Storage</li>
+					<li>User Data storage</li>
+					<li>S3-like services</li>
+					<li>Cloud infrastructure</li>
+					<li>Scalable, low-latency storage for mobile apps</li>
+					<li>Critical Data Storage and Disaster Proof Medical Data (see Denmark Healthcare use case)</li>
+					<li>Building Block for custom-built distributed systems</li>
+				</ul>
+				<!-- http://www.infoq.com/news/2011/12/andy-gross-riak-database -->
+			</section>
+			<section>
+				<h2>Riak - Pros (1)</h2>
+				<ul>
+					<li>Masterless, all nodes are equal (in contrast to e.g. MongoDB)</li>
+					<li>No single point of failure</li>
+					<li>Fast and stable</li>
+					<li>Good internal cache (usually no caching layer required)</li>
+					<li>Default replication (Quorum)</li>
+					<li>Lots of settings for fine tuning (R, W)</li>
+					<li>Easy installation</li>
+					<li>Cluster staging (plan, commit)</li>
+					<li>Nice administration tools (e.g. Rekon)</li>
+					<li>Flexible backend (Bitcask, LevelDB)</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Riak - Pros (2)</h2>
+				<ul>
+					<li>Really good <a href="http://docs.basho.com/riak/latest/">documentation</a></li>
+					<li>Easy backup and restore</li>
+					<li>Secondary indexes</li>
+					<li>Map/reduce facility</li>
+					<li>ProtocolBuffers</li>
+					<li>Painless upgrade</li>
+					<li>Professional support</li>
+					<li>Amazon S3 connector</li>
+					<li>Open Source, Apache 2.0 license</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Riak - Cons</h2>
+				<ul>
+					<li>Not performant key querying (in progress)</li>
+					<li>Performance on small VM (not recommended)</li>
+					<li>Read repair may not what you expect</li>
+					<li>Phonetically close to 'risk' for web search</li>
+				</ul>
+			</section>
+			<section>
+				<h2>German facts</h2>
+				<p>The most common name in Germany is</p>
+				<img src="http://www.whoateallthepies.tv/wp-content/uploads/2010/07/PA-9025982.jpg" />
+			</section>
+		</div>
+
+		<!-- The navigational controls UI -->
+		<aside class="controls">
+			<a class="left" href="#">&#x25C4;</a> <a class="right" href="#">&#x25BA;</a> <a class="up" href="#">&#x25B2;</a> <a
+				class="down" href="#">&#x25BC;</a>
+		</aside>
+
+		<!-- Presentation progress bar -->
+		<div class="progress">
+			<span></span>
+		</div>
+
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.min.js"></script>
+
+	<script>
+			
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				
+				theme: Reveal.getQueryHash().theme || 'default', // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/linear(2d)
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/highlight.js', async: true, callback: function() { window.hljs.initHighlightingOnLoad(); } },
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'lib/js/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/js/data-markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/socket.io/socket.io.js', async: true, condition: function() { return window.location.host === 'localhost:1947'; } },
+					{ src: 'plugin/speakernotes/client.js', async: true, condition: function() { return window.location.host === 'localhost:1947'; } },
+				]
+			});
+			
+		</script>
+
+</body>
+</html>
