@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileWatcher", "FileWatcher\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserStorySaga", "UserStorySaga\UserStorySaga.csproj", "{E09ED910-77D2-4F7E-9FD2-16C746B56F30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracert", "Tracert\Tracert.csproj", "{72F562EF-AA09-4E50-9F77-655636AEA746}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,16 @@ Global
 		{E09ED910-77D2-4F7E-9FD2-16C746B56F30}.Release|Mixed Platforms.Build.0 = Release|x86
 		{E09ED910-77D2-4F7E-9FD2-16C746B56F30}.Release|x86.ActiveCfg = Release|x86
 		{E09ED910-77D2-4F7E-9FD2-16C746B56F30}.Release|x86.Build.0 = Release|x86
+		{72F562EF-AA09-4E50-9F77-655636AEA746}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{72F562EF-AA09-4E50-9F77-655636AEA746}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{72F562EF-AA09-4E50-9F77-655636AEA746}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{72F562EF-AA09-4E50-9F77-655636AEA746}.Debug|x86.ActiveCfg = Debug|x86
+		{72F562EF-AA09-4E50-9F77-655636AEA746}.Debug|x86.Build.0 = Debug|x86
+		{72F562EF-AA09-4E50-9F77-655636AEA746}.Release|Any CPU.ActiveCfg = Release|x86
+		{72F562EF-AA09-4E50-9F77-655636AEA746}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{72F562EF-AA09-4E50-9F77-655636AEA746}.Release|Mixed Platforms.Build.0 = Release|x86
+		{72F562EF-AA09-4E50-9F77-655636AEA746}.Release|x86.ActiveCfg = Release|x86
+		{72F562EF-AA09-4E50-9F77-655636AEA746}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

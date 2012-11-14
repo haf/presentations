@@ -3,7 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="This picture was just taken!" Height="300" Width="300" WindowState="Maximized" Background="#FF585858">
     <Grid>
-		<Button Content="Saw It" Height="35" HorizontalAlignment="Center" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" Margin="0,25,0,0" FontSize="18" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+		<Button Content="Saw It" Height="35" HorizontalAlignment="Center" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" Margin="0" FontSize="18" />
 		<Image HorizontalAlignment="Stretch" Name="MainImage" Stretch="Uniform" VerticalAlignment="Stretch" />
 	</Grid>
 </Window>

@@ -47,4 +47,10 @@ namespace Messages
 	public interface Shutdown
 	{
 	}
+
+	public interface Trace
+		: CorrelatedBy<Guid>
+	{
+		string Message { get; }
+	}
 }
