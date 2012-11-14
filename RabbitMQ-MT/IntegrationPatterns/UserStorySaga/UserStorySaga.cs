@@ -34,6 +34,8 @@ namespace UserStorySaga
 		{
 			var awaiter = new ManualResetEventSlim(false);
 
+			_logger.Info("Using db: {0}", Path.GetFullPath(Path.Combine("App_Data", "sagas.sdf")));
+
 			var sessionFactory = Fluently.Configure()
 				.Database(MsSqlCeConfiguration.Standard.ConnectionString(
 					_connectionString))
@@ -68,7 +70,8 @@ namespace UserStorySaga
 			// of course no way to *know* if I need to upgrade it, no idempotent method to call
 			try { new SqlCeEngine(_connectionString).Upgrade(); }
 			catch (SqlCeException) { }
-			new SchemaUpdate(cfg).Execute(true, true);
+			new SchemaExport(cfg).Create(true, true);
+			//new SchemaUpdate(cfg).Execute(true, false);
 		}
 	}
 

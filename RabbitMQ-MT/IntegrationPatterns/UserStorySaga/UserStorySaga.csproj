@@ -142,6 +142,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <Content Include="App_Data\sagas.empty.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\sagas.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
